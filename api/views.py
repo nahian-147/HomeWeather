@@ -38,3 +38,9 @@ def get_weather_last_t_seconds(request):
     t = float(request.GET.get('t'))
     weather_last_t_seconds = WeatherSerializer(Weather.objects.filter(time__range=(time.time()-t, time.time())), many=True)
     return Response(weather_last_t_seconds.data, status=200)
+
+@api_view(['GET'])
+def get_weather_recent_n_records(request):
+    n = int(request.GET.get('n'))
+    weather_last_t_seconds = WeatherSerializer(Weather.objects.all().order_by('-time')[:n], many=True)
+    return Response(weather_last_t_seconds.data, status=200)
