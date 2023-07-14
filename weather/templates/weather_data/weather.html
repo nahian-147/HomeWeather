@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>
+            Weather
+        </title>
+
+        <script src="https://cdn.plot.ly/plotly-2.18.0.min.js"></script>
+    </head>
+    
+    <body>
+        <h1>Weather</h1>
+        <div id="temperature"></div>
+        <script type="text/javascript">
+            var time_epoch = JSON.parse("{{x}}")
+            console.log(time_epoch);
+            var time = []
+            time_epoch.forEach((x, i) => time.push(new Date(x*1000)));
+            console.log(time)
+            var temps = JSON.parse("{{y_t}}");
+            console.log(temps);
+            temperature = document.getElementById('temperature');
+            Plotly.newPlot( "temperature", [{
+            x: time,
+            y: temps,
+            type: 'scatter' }], {title:'Temperature'} );
+        </script>
+        <br>
+        <div id="pressure"></div>
+        <script type="text/javascript">
+            var time_epoch = JSON.parse("{{x}}")
+            console.log(time_epoch);
+            var time = []
+            time_epoch.forEach((x, i) => time.push(new Date(x*1000)));
+            console.log(time)
+            var temps = JSON.parse("{{y_p}}");
+            console.log(temps);
+            pressure = document.getElementById('pressure');
+            Plotly.newPlot( "pressure", [{
+            x: time,
+            y: temps,
+            type: 'scatter' }], {title:'Pressure'} );
+        </script>
+        <br>
+        <div id="humidity"></div>
+        <script type="text/javascript">
+            var time_epoch = JSON.parse("{{x}}")
+            console.log(time_epoch);
+            var time = []
+            time_epoch.forEach((x, i) => time.push(new Date(x*1000)));
+            console.log(time)
+            var temps = JSON.parse("{{y_h}}");
+            console.log(temps);
+            humidity = document.getElementById('humidity');
+            Plotly.newPlot( "humidity", [{
+            x: time,
+            y: temps,
+            type: 'scatter' }], {title:'Humidity'} );
+        </script>
+    </body>
+<html>

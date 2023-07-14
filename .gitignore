@@ -1,0 +1,9 @@
+/db.sqlite3
+
+air/__pycache__/*
+
+api/__pycache__/*
+api/migrations/*
+
+weather/__pycache__/*
+weather/migrations/*
