@@ -7,23 +7,23 @@ import json
 import time
 
 @api_view(['POST'])
-def saveWeather(request):
+def save_weather(request):
     
     weather = request.data
-    weatherRecord = Weather()
-    weatherRecord.weather_json = json.dumps(weather['weather_json'])
-    weatherRecord.time = float(weather['time'])
+    weather_record = Weather()
+    weather_record.weather_json = json.dumps(weather['weather_json'])
+    weather_record.time = float(weather['time'])
     try:
-        weatherRecord.save()
+        weather_record.save()
         return Response({'message' : 'saved'}, status=201)
     except:
         return Response({'message' : 'bad format'}, status=501)
 
 
 @api_view(['GET'])
-def getAllWeather(request):
-    allWeatherSerialized = WeatherSerializer(Weather.objects.all(), many=True)
-    return Response(allWeatherSerialized.data, status=200)
+def get_all_weather(request):
+    all_weather_serialized = WeatherSerializer(Weather.objects.all(), many=True)
+    return Response(all_weather_serialized.data, status=200)
 
 
 @api_view(['GET'])

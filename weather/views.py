@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Weather
 import json
 
-def showWeather(request):
+def show_weather(request):
     weathers = Weather.objects.all()
     x = []
     y_t = []
